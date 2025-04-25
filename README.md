@@ -37,20 +37,22 @@ sudo apt install curl grep sed awk
 
 🍬 Installation
 
-    Téléchargez Shawty:
+Téléchargez Shawty:
 
 ```bash
 
 git clone https://github.com/Sil3ntPurr/shawty.git
 cd shawty
 ```
-    Rendez le script exécutable:
+
+Rendez le script exécutable:
 
 ```bash
 
 chmod +x shawty.sh
 ```
-    Exécutez-le:
+
+Exécutez-le:
 
 ```bash
 
