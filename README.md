@@ -95,8 +95,7 @@ Tests de Sécurité
 
     XSS: Vérifie l'accès à l'éditeur de thème
 
-il n'a pour le moment que trois test EXTREMEMENT BASIQUE je compte biensur en rajouter par la suite :) !
-
+Pour le moment, il ne dispose que de trois tests extrêmement basiques, mais je compte bien en ajouter beaucoup d'autres par la suite ! 😊
 
 💖 Contribution
 
