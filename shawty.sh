@@ -17,8 +17,7 @@ center_file() {
 	local term_width="${COLUMNS:-$(tput cols)}"
 
 	if [[ ! -f "$file" ]]; then
-		echo "Fichier non trouvé : $file"
-		return 1
+		print_error "Fichier non trouvé : $file"
 	fi
 
 	while IFS= read -r line; do
