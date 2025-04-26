@@ -52,6 +52,7 @@ echo ''
 center_text "Made with <3 by Community" $PEACH
 echo ''
 center_file ascii/SHAWTY.txt $PINK
+center_text "v$(cat .version)" $STAR
 echo ''
 
 
@@ -225,12 +226,23 @@ test_xss() {
 
 # Fonction principale
 main() {
+	if [ ! -f "/tmp/shawty-version" ]; then
+		rm -f /tmp/shawty-version
+	fi
+	wget -q https://raw.githubusercontent.com/Sil3ntPurr/Shawty/refs/heads/main/.version -O /tmp/shawty-version
+	if ! diff /tmp/shawty-version .version &> /dev/null; then
+		echo ''
+		log_warning "Une nouvelle version de SHAWTY est disponible!"
+		log_warning "Mettez a jour avec la commande: git pull"
+		echo ''
+	fi
+
 	if [ $# -lt 1 ]; then
 		log_error "Usage: $0 <URL>"
+		exit 1
 	fi
 
 	SENPAI_TARGET="$1"
-
 	check_dependencies
 	prepare_url
 
