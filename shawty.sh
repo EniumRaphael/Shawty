@@ -50,7 +50,7 @@ center_text() {
 
 center_file ascii/cat.txt $LAVENDER
 echo ''
-center_text "Made with <3 by Sil3ntPurr" $PEACH
+center_text "Made with <3 by Community" $PEACH
 echo ''
 center_file ascii/SHAWTY.txt $PINK
 echo ''
