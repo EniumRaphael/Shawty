@@ -11,19 +11,49 @@ LAVENDER='\033[38;5;183m'
 STAR='\033[38;5;228m'
 RESET='\033[0m'
 
-cat ascii/cat.txt
+center_file() {
+	local file="$1"
+	local color="$2"
+	local term_width="${COLUMNS:-$(tput cols)}"
+
+	if [[ ! -f "$file" ]]; then
+		echo "Fichier non trouvé : $file"
+		return 1
+	fi
+
+	while IFS= read -r line; do
+		local text="$line"
+		local text_length=${#text}
+		local padding=$(( (term_width - text_length) / 2 ))
+
+		if [ $padding -lt 0 ]; then
+			padding=0
+		fi
+
+		printf "${color}%*s%s${RESET}\n" "$padding" '' "$text"
+	done < "$file"
+}
+
+center_text() {
+	local term_width="${COLUMNS:-$(tput cols)}"
+	local text="$1"
+	local color="$2"
+	local text_length=${#text}
+	local padding=$(( (term_width - text_length) / 2 ))
+
+	if [ $padding -lt 0 ]; then
+		padding=0
+	fi
+
+	printf "${color}%*s%s${RESET}\n" $padding '' "$text"
+}
+
+center_file ascii/cat.txt $LAVENDER
 echo ''
-echo -e "${PEACH}   Made with <3 by Sil3ntPurr ${RESET}"
-echo -e "${PINK}"
-cat << "EOF"
-███████╗██╗  ██╗ █████╗ ██╗    ██╗████████╗██╗   ██╗
-██╔════╝██║  ██║██╔══██╗██║    ██║╚══██╔══╝╚██╗ ██╔╝
-███████╗███████║███████║██║ █╗ ██║   ██║    ╚████╔╝ 
-╚════██║██╔══██║██╔══██║██║███╗██║   ██║     ╚██╔╝  
-███████║██║  ██║██║  ██║╚███╔███╔╝   ██║      ██║   
-╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝    ╚═╝      ╚═╝   
-EOF
-echo -e "${RESET}"
+center_text "Made with <3 by Sil3ntPurr" $PEACH
+echo ''
+center_file ascii/SHAWTY.txt $PINK
+echo ''
 
 
 # Variables globales
