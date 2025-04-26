@@ -121,10 +121,10 @@ detect_wordpress() {
 	"wp-admin"
 	"wordpress"
 	"wp-login.php"
-)
+	)
 
-local found=false
-local response
+	local found=false
+	local response
 
 	# Test de la page d'accueil
 	response=$(make_request "$SENPAI_TARGET")
