@@ -160,16 +160,16 @@ detect_wordpress() {
 	local version=""
 
 	# Méthode 1: readme.html
-	version=$(make_request "$SENPAI_TARGET/readme.html" | grep -i "version" | head -1 | grep -oP "[0-9]+\.[0-9]+")
+	version=$(make_request "$SENPAI_TARGET/readme.html" | grep -i "version" | head -1 | grep -o "[0-9]\+\.[0-9]\+")
 
 	# Méthode 2: meta generator
 	if [ -z "$version" ]; then
-		version=$(echo "$response" | grep -i "meta name=\"generator\"" | grep -oP "content=\"WordPress [0-9]+\.[0-9]+" | grep -oP "[0-9]+\.[0-9]+")
+		version=$(echo "$response" | grep -i "meta name=\"generator\"" | grep -o "content=\"WordPress [0-9]\+\.[0-9]\+" | grep -o "[0-9]\+\.[0-9]\+")
 	fi
 
 	# Méthode 3: wp-includes/version.php
 	if [ -z "$version" ]; then
-		version=$(make_request "$SENPAI_TARGET/wp-includes/version.php" | grep -oP "\$wp_version = '[0-9]+\.[0-9]+'" | grep -oP "[0-9]+\.[0-9]+")
+		version=$(make_request "$SENPAI_TARGET/wp-includes/version.php" | grep -o "\$wp_version = '[0-9]\+\.[0-9]\+'" | grep -o "[0-9]\+\.[0-9]\+")
 	fi
 
 	if [ -n "$version" ]; then
