@@ -24,7 +24,7 @@
 ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝    ╚═╝      ╚═╝      "Made with <3 by Sil3ntPurr"
 ```
 
-Shawty est un scanner de vulnérabilités WordPress mignon mais puissant, écrit en Bash avec une touche à la Sil3ntPurr ! 
+Shawty est un scanner de vulnérabilités WordPress construit pour la communauté il a l'objectif d'être mignon mais puissant, il est écrit en Bash avec une touche à la Sil3ntPurr ! 
 Il détecte les problèmes de sécurité courants et génère des rapports colorés avec des emojis.
 
 ___
